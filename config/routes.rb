@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   	    get "followers" => "relationships#followers", as: "followers"
   end
   
-  resources :groups, except: [:destroy]
+  resources :groups, only:  [:new, :index, :show, :create, :edit, :update] do
+    resource :group_users, only: [:create, :destroy]
+  end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
